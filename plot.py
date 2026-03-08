@@ -16,13 +16,13 @@ from typeguard import typechecked
 def plot_maps(
     nrows: int = 1,
     ncols: int = 1,
-    figsize: tuple[float, float] = (8, 8),
-    west: float | list[float] = 100,
-    east: float | list[float] = 137,
-    south: float | list[float] = 16,
-    north: float | list[float] = 54,
+    figsize: tuple[int | float, int | float] = (8, 8),
+    west: int | float | list[int | float] = 100,
+    east: int | float | list[int | float] = 137,
+    south: int | float | list[int | float] = 16,
+    north: int | float | list[int | float] = 54,
     gridlines: bool | list[bool] = True,
-    gridstep: float | list[float] = 10
+    gridstep: int | float | list[int | float] = 10
 ) -> tuple[mfigure.Figure, np.ndarray]:
     """
     Plot subplots.
@@ -78,13 +78,13 @@ def plot_maps(
 
 @typechecked
 def plot_map(
-    figsize: tuple[float, float] = (8, 8),
-    west: float = 100,
-    east: float = 137,
-    south: float = 16,
-    north: float = 54,
+    figsize: tuple[int | float, int | float] = (8, 8),
+    west: int | float = 100,
+    east: int | float = 137,
+    south: int | float = 16,
+    north: int | float = 54,
     gridlines: bool = True,
-    gridstep: float = 10
+    gridstep: int | float = 10
 ) -> tuple[mfigure.Figure, maxes.Axes]:
     """
     Plot a map.
@@ -119,7 +119,7 @@ def plot_provinces(axes: maxes.Axes | np.ndarray, file: str = 'JSON/china_provin
 
 @typechecked
 def get_colorbar(
-    bounds: list[float] | str = 'O3',
+    bounds: list[int | float] | str = 'O3',
     colors: list[str] | str = 'AQI'
 ) -> tuple[mcolors.ListedColormap, mcolors.BoundaryNorm]:
     """
@@ -153,12 +153,12 @@ def plot_colorbar(
     cax: maxes.Axes | None = None,
     orientation: str = 'vertical',
     extend: str = 'neither',
-    pad: float = 0.02,
-    aspect: float = 30,
-    fraction: float = 0.02,
+    pad: int | float = 0.02,
+    aspect: int | float = 30,
+    fraction: int | float = 0.02,
     label: str = 'MDA8 (μg $\\cdot$ m$^{-3}$)',
-    fontsize: float = 12,
-    labelsize: float = 10
+    fontsize: int | float = 12,
+    labelsize: int | float = 10
 ) -> None:
     """
     Plot a colorbar.
@@ -181,7 +181,7 @@ def plot_colorbar(
     cbar.ax.tick_params(labelsize = labelsize)
 
 @typechecked
-def save_fig(filename: str, dpi: float = 300, bbox_inches: None | mtransforms.Bbox | str = 'tight') -> None:
+def save_fig(filename: str, dpi: int | float = 300, bbox_inches: None | mtransforms.Bbox | str = 'tight') -> None:
     """
     Save the figure.
     Args:
