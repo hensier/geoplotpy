@@ -158,6 +158,7 @@ def plot_colorbar(
     aspect: int | float = 30,
     fraction: int | float = 0.02,
     label: str = 'MDA8 (μg $\\cdot$ m$^{-3}$)',
+    ticks: list[int | float] | None = None,
     fontsize: int | float = 12,
     labelsize: int | float = 10
 ) -> None:
@@ -179,6 +180,8 @@ def plot_colorbar(
     """
     cbar = plt.colorbar(sc, ax = ax, cax = cax, orientation = orientation, extend = extend, pad = pad, aspect = aspect, fraction = fraction)
     cbar.set_label(label, fontsize = fontsize)
+    if ticks is not None:
+        cbar.set_ticks(ticks)
     cbar.ax.tick_params(labelsize = labelsize)
 
 @typechecked

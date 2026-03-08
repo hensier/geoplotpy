@@ -54,4 +54,4 @@ gpp.save_fig('ex2.png')
 ```
 
 ### Version
-0.1.2
+0.1.3
