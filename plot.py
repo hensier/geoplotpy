@@ -6,6 +6,7 @@ import matplotlib.figure as mfigure
 import matplotlib.axes as maxes
 import matplotlib.collections as mcollections
 import matplotlib.transforms as mtransforms
+import matplotlib.contour as mcontour
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import geopandas as gpd
@@ -148,7 +149,7 @@ def get_colorbar(
 
 @typechecked
 def plot_colorbar(
-    sc: mcollections.PathCollection,
+    sc: mcollections.PathCollection | mcontour.QuadContourSet,
     ax: maxes.Axes | None = None,
     cax: maxes.Axes | None = None,
     orientation: str = 'vertical',
