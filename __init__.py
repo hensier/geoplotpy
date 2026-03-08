@@ -33,10 +33,10 @@ Example 2: Plot a map with a colorbar.
 >>> gpp.save_fig('ex2.png')
 
 Version:
-    0.1.3
+    0.1.4
 """
 
-__version__ = '0.1.3'
+__version__ = '0.1.4'
 
 from .plot import (
     plot_maps,

@@ -24,7 +24,7 @@ def plot_maps(
     north: int | float | list[int | float] = 54,
     gridlines: bool | list[bool] = True,
     gridstep: int | float | list[int | float] = 10
-) -> tuple[mfigure.Figure, np.ndarray]:
+) -> tuple[mfigure.Figure, np.ndarray[maxes.Axes]]:
     """
     Plot subplots.
     Args:
@@ -103,7 +103,7 @@ def plot_map(
     return fig, axes[0]
 
 @typechecked
-def plot_provinces(axes: maxes.Axes | np.ndarray, file: str = 'JSON/china_provinces.json') -> None:
+def plot_provinces(axes: maxes.Axes | np.ndarray[maxes.Axes], file: str = 'JSON/china_provinces.json') -> None:
     """
     Plot the provinces of China on the map.
     Args:
@@ -158,7 +158,7 @@ def plot_colorbar(
     aspect: int | float = 30,
     fraction: int | float = 0.02,
     label: str = 'MDA8 (μg $\\cdot$ m$^{-3}$)',
-    ticks: list[int | float] | None = None,
+    ticks: list[int | float] | np.ndarray[int | float] | None = None,
     fontsize: int | float = 12,
     labelsize: int | float = 10
 ) -> None:
