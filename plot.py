@@ -120,8 +120,8 @@ def plot_provinces(axes: maxes.Axes | np.ndarray[maxes.Axes], file: str = 'JSON/
 
 @typechecked
 def get_colorbar(
-    bounds: list[int | float] | str = 'O3',
-    colors: list[str] | str = 'AQI'
+    bounds: list[int | float] | np.ndarray[int | float] | tuple[int | float, ...] = 'O3',
+    colors: str | list[str] | mcolors.Colormap = 'AQI'
 ) -> tuple[mcolors.ListedColormap, mcolors.BoundaryNorm]:
     """
     Get the color map and the norm for the colorbar.
@@ -134,22 +134,21 @@ def get_colorbar(
     if isinstance(bounds, str):
         if bounds in clb.bounds:
             bounds = clb.bounds[bounds]
-        else:
-            raise ValueError(f'Invalid bounds: {bounds}')
     if isinstance(colors, str):
         if colors in clb.colors:
             colors = clb.colors[colors]
-        else:
-            raise ValueError(f'Invalid colors: {colors}')
 
-    cmap = mcolors.ListedColormap(colors)
+    if isinstance(colors, mcolors.Colormap):
+        cmap = colors
+    else:
+        cmap = mcolors.ListedColormap(colors)
     norm = mcolors.BoundaryNorm(bounds, cmap.N)
 
     return cmap, norm
 
 @typechecked
 def plot_colorbar(
-    sc: mcollections.PathCollection | mcontour.QuadContourSet,
+    sc: mcollections.PathCollection | mcontour.QuadContourSet | plt.cm.ScalarMappable,
     ax: maxes.Axes | None = None,
     cax: maxes.Axes | None = None,
     orientation: str = 'vertical',
